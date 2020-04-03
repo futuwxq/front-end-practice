@@ -1,0 +1,85 @@
+body {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #999;
+}
+
+.top_middle {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.redColor {
+    color: #c40000 !important;
+}
+
+nav.top {
+    background-color: #f2f2f2;
+    padding: 5px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+nav.top span,nav.top a {
+    color: #999;
+    padding: 0 10px;
+}
+
+nav.top a:hover {
+    color: #c40000;
+    text-decoration: none;
+}
+
+/* search部分 */
+.searchBar {
+    margin: 50px auto;
+    width: 400px;
+    height: 40px;
+    display: block;
+    padding: 1px;
+    background-color: #c40000;
+}
+
+.searchBar input {
+    width: 275px;
+    height: 36px;
+    border: 1px solid transparent;
+    margin: 1px;
+    outline: none;
+}
+
+.searchBar button {
+    background-color: #c40000; 
+    color: #fff;
+    border: 1px solid transparent;
+    width: 110px;
+    font-size: 20px;
+    font-weight: bold;
+    /* margin-top: 1px; */
+}
+
+.searchBar .catalog {
+    margin-top:3px;
+    margin-left:-20px;
+}
+
+.searchBar .catalog span {
+    color: #999;
+}
+
+.searchBar .catalog a {
+    padding: 20px;
+    font-size: 14px;
+}
+.searchBar .catalog a:hover{
+    color: #c40000;
+    text-decoration: none;
+}
+
+img.logo {
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    z-index: -1;
+}

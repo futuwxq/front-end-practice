@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结算页面</title>
+    <script src="https://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="https://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="https://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <link href="css/common.css" rel="stylesheet">
+    <style>
+        .buyPageDiv{
+            margin: 20px auto;
+            max-width: 1013px;
+        }
+        .address {
+            margin: 20px 5px;
+            text-align: left;
+        }
+        .addressTitle ,.productListTip {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        table.addressTable {
+            margin: 20px;
+            width: 600px;
+        }
+        table.addressTable td {
+            text-align: left;
+            vertical-align: top;
+            padding-right: 5px;
+            height: 30px;
+        }
+        table.addressTable td.firstColumn {
+            width: 100px;
+        }
+        table.addressTable td textarea {
+            border: 1px solid #AFAFAF;
+            width: 200px;
+        }
+        span.redStar {
+            color: red;
+            font-size: 8px;
+        }
+        .productListTable {
+            width: 100%;
+            /* border-collapse: separate; */
+        }
+        table.productListTable th {
+            color: #999999;
+            font-family: 宋体;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+        table.productListTable tr.rowborder td {
+            /* display: inline-block; */
+            background-color: #b2d1ff;
+            border-right: 2px solid #fff;
+            height: 3px;
+        }
+        table.productListTable th.productListTableFirstColumn {
+            text-align: left;
+        }
+        img.tmallbuy {
+            width: 15px;
+        }
+        a.marketLink {
+            color: #000;
+            font-family: 宋体;
+            font-weight: normal;
+        }
+        a.marketLink:hover {
+            text-decoration: underline;
+        }
+        span.wangwangGif {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-image: url(https://how2j.cn/tmall/img/site/wangwang.gif);
+            background-repeat: no-repeat;
+            background-color: transparent;
+            background-attachment: scroll;
+            background-position: -83px -0;
+            position: relative;
+            top: 8px;
+            left: 2px;
+        }
+        tbody.productListTableTbody td {
+            text-align: center;
+        }
+        tbody.productListTableTbody td.orderItemFirstTD {
+            text-align: left;
+        }
+        tr.orderItemTR td {
+            border-bottom: 1px solid #E5E5E5;
+            padding: 10px 0px;
+        }
+        img.orderItemImg{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #E9E9E9;
+        }
+        td.orderItemProductInfo {
+            text-align: left!important;
+        }
+        td.orderItemProductInfo img {
+            height: 16px;
+        }
+        a.orderItemProductLink {
+            display: block;
+            color: #666;
+        }
+        a.orderItemProductLink:hover {
+            text-decoration: underline;
+        }
+        span.orderItemProductPrice, span.orderItemProductNumber {
+            color: #000;
+        }
+        span.orderItemUnitSum {
+            color: #CC0000;
+            font-weight: bold;
+        }
+        td.orderItemFirstTD, td.orderItemLastTD {
+            border-bottom: 0px solid black !important;
+        }
+        label.orderItemDeliveryLabel {
+            color: #666;
+            font-family: 宋体;
+            font-weight: normal;
+        }
+        select.orderItemDeliverySelect {
+            width: 100px;
+            height: 23px;
+        }
+        div.orderItemSumDiv {
+            padding: 20px;
+            border-top: 2px solid #b4d0ff;
+            background-color: #f2f6ff;
+            height: 50px;
+            color: #999999;
+        }
+        span.leaveMessageText {
+            display: inline-block;
+            margin-right: 10px;
+            float: left;
+        }
+        div.orderItemTotalSumDiv {
+            margin: 40px;
+            height: 40px;
+            color: #999999;
+        }
+        div.submitOrderDiv {
+            height: 40px;
+            margin: 20px 0;
+        }
+        span.orderItemTotalSumSpan {
+            color: #c40000;
+            font-size: 22px;
+            font-weight: bold;
+            border-bottom: 1px dotted #F2F6FF;
+        }
+        button.submitOrderButton {
+            border: 1px solid #C40000;
+            background-color: #c40000;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            float: right;
+            margin: 0 10px;
+            width: 180px;
+            height: 40px;
+        }
+        textarea.leaveMessageTextarea {
+            border: 1px solid #ffad35;
+            width: 250px;
+            height: 60px;
+            resize: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $(function(){
+            $("#footer").load("footer.html");
+            $("#header").load("header.html");
+            $("img.leaveMessageImg").click(function(){
+               $(this).hide(); 
+               $("span.leaveMessageTextareaSpan").show();
+               $("div.orderItemSumDiv").css("height","100px");
+            })
+        })
+    </script>
+     <div id="header"></div>
+    <div class="buyPageDiv">
+       
+            <div class="buyFlow clearfix">
+                <img src="https://how2j.cn/tmall/img/site/simpleLogo.png" class="pull-left">
+                <img src="https://how2j.cn/tmall/img/site/buyflow.png" class="pull-right">
+            </div>
+            <div class="address">
+                <div class="addressTitle">输入收货地址</div>
+                <div class="addressDiv">
+                    <table class="addressTable">
+                        <tr>
+                            <td class="firstColumn">详细地址<span class="redStar">*</span></td>
+                            <td><textarea name="address"  placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>邮政编码</td>
+                            <td><input type="text" name="post" placeholder="如果您不清楚邮递区号，请填写000000" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>收货人姓名<span class="redStar">*</span></td>
+                            <td><input type="text" name="receiver" placeholder="长度不超过25个字符">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>手机号码 <span class="redStar">*</span></td>
+                            <td><input type="text" name="mobile" placeholder="请输入11位手机号码">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <form action="pay.html" method="post">
+
+      
+            <div class="productList">
+                <div class="productListTip">确认订单信息</div>
+                <table class="productListTable">
+                    <tr class="rowBar" >
+                        <th class="productListTableFirstColumn" colspan="2">
+                            <img src="https://how2j.cn/tmall/img/site/tmallbuy.png" class="tmallbuy">
+                            <a href="#nowhere" class="marketLink">店铺：天猫店铺</a>
+                            <a href="#nowhere" class="wangwanglink"> <span class="wangwangGif"></span> </a>
+                        </th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>小计</th>
+                        <th>配送方式</th>
+                    </tr>
+                    <tr class="rowborder">
+                        <td colspan="2"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tbody class="productListTableTbody">
+                        <tr class="orderItemTR">
+                            <td class="orderItemFirstTD"><img width="20px"  src="https://how2j.cn/tmall/img/productSingle_middle/4206.jpg" class="orderItemImg"></td>
+                            <td class="orderItemProductInfo">
+                            <a class="orderItemProductLink" href="#nowhere">
+                                Philips/飞利浦 HR1897/30破壁微榨原汁机 多功能家用果汁榨汁机
+                            </a>
+                                <img title="支持信用卡支付" src="https://how2j.cn/tmall/img/site/creditcard.png">
+                                <img title="消费者保障服务,承诺7天退货" src="https://how2j.cn/tmall/img/site/7day.png">
+                                <img title="消费者保障服务,承诺如实描述" src="https://how2j.cn/tmall/img/site/promise.png">
+                            </td>
+                            <td>
+                            <span class="orderItemProductPrice">￥3,514.05</span>
+                            </td>
+                            <td>
+                            <span class="orderItemProductNumber">2</span>
+                            </td>
+                            <td><span class="orderItemUnitSum">
+                            ￥7,028.10
+                            </span></td>
+                            <td class="orderItemLastTD" rowspan="5">
+                            <label class="orderItemDeliveryLabel">
+                                <input type="radio" checked="checked" value="">
+                                普通配送
+                            </label>
+                            <select class="orderItemDeliverySelect">
+                                <option>快递 免邮费</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr class="orderItemTR">
+                            <td class="orderItemFirstTD"><img width="20px"  src="https://how2j.cn/tmall/img/productSingle_middle/3796.jpg" class="orderItemImg"></td>
+                            <td class="orderItemProductInfo">
+                            <a class="orderItemProductLink" href="#nowhere">
+                                公众智能扫地机器人家用全自动电动清洁地毯擦拖地一体机吸尘器
+                            </a>
+                                <img title="支持信用卡支付" src="https://how2j.cn/tmall/img/site/creditcard.png">
+                                <img title="消费者保障服务,承诺7天退货" src="https://how2j.cn/tmall/img/site/7day.png">
+                                <img title="消费者保障服务,承诺如实描述" src="https://how2j.cn/tmall/img/site/promise.png">
+                            </td>
+                            <td>
+                            <span class="orderItemProductPrice">￥2,124.15</span>
+                            </td>
+                            <td>
+                            <span class="orderItemProductNumber">1</span>
+                            </td>
+                            <td><span class="orderItemUnitSum">
+                            ￥2,124.15
+                            </span></td>
+                        </tr>
+                  </tbody>
+                </table>
+                <div class="orderItemSumDiv">
+                    <div class="pull-left">
+                        <span class="leaveMessageText">给卖家留言:</span>
+                        <span>
+                            <img src="https://how2j.cn/tmall/img/site/leaveMessage.png" class="leaveMessageImg">
+                        </span>
+                        <span class="leaveMessageTextareaSpan" style="display: none;">
+                            <textarea class="leaveMessageTextarea" name="userMessage"></textarea>
+                            <div>
+                                <span>还可以输入200个字符</span>
+                            </div>
+                        </span>
+                    </div>
+                    <span class="pull-right">店铺合计(含运费): ￥9,152.25</span>
+                </div>
+            </div>
+            <div class="orderItemTotalSumDiv clearfix">
+                <div class="pull-right">
+                    <span>实付款：</span>
+                    <span class="orderItemTotalSumSpan">￥9,152.25</span>
+                </div>
+            </div>
+            <div class="submitOrderDiv">
+                    <button class="submitOrderButton" type="submit">提交订单</button>
+            </div>
+        </form>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .footer {
+            margin:0;
+            border-top: 1px solid #e7e7e7;
+        }
+
+        .footer_ensure {
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .footer_des {
+            border-top: 1px solid #efefef;
+            margin: 0PX 20px;
+            padding-top: 30px;
+            /* width: 100%; */
+        }
+
+        .footer_des .descColumn {
+            float: left;
+            width: 20%;
+           padding-left: 15px;
+        }
+        .footer_des .descColumn .descColumnTitle{
+            color: #646464;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .footer_des .descColumn a{
+            display: block;
+            padding-top: 3px;
+        }
+        a:hover {
+            color: #c40000;
+            text-decoration: none;
+        }
+        .copyright {
+            border-top: 2px solid #c40000;
+            background: #000;
+        }
+        .copyright span.slash {
+            color: #fff;
+        }
+        a {
+            color: #646464;
+        }
+        .footer .copyright .white_link a {
+            color: #fff;
+            padding: 0 5px;
+        }
+
+        .footer .copyright .white_link {
+            padding: 10px 0;
+            margin-left: 10px;
+        }
+
+        .footer .copyright .license {
+            margin-left: 10px;
+            padding-bottom: 30px;
+        }
+
+        .footer .copyright .license span {
+            color: #a4a4a4;
+        }
+        .footer .copyright .license .copyRightYear {
+            color: #686868;
+            padding: 10px 0;
+        }
+        .footer .cateye {
+            padding-left: 20px;
+        }
+    </style>
+    <title>首页</title>
+</head>
+<body>
+    <nav class="top">
+        <div class="top_middle">
+            <span class="lf ">
+                <a href="#" class="nav-item">
+                    <span class="glyphicon glyphicon-home redColor"></span>
+                    天猫首页
+                </a>
+                <span class="nav-item">喵，欢迎来天猫</span>
+                <a class="nav-item" href="/login">请登录</a>
+                <a href="#" class="nav-item">免费注册</a>
+            </span>
+            <span class="pull-right">
+                <a href="#" class="nav-item">我的订单</a>
+                <a href="" class="nav-item">
+                    <span class="glyphicon glyphicon-shopping-cart redColor"></span>
+                    购物车<strong>0</strong>件</a>
+            </span>
+        </div>
+    </nav>
+    <div class="searchDiv">
+        <a href="#">
+            <img class="logo" src="https://how2j.cn/tmall/img/site/logo.gif" alt="天猫">
+        </a>
+        <div class="searchBar">
+            <input type="text" placeholder="时尚男鞋 太阳镜">
+            <button>搜索</button>
+            <div class="catalog">
+                <span> <a href="#">平衡车</a><span> |</span></span>
+                <span> <a href="#">扫地机器人</a><span> |</span></span>
+                <span> <a href="#">原汁机</a><span> |</span></span>
+                <span> <a href="#">冰箱</a></span>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+
+
+
+
+    <div class="footer">
+        <div class="footer_ensure">
+            <a href="#">
+                <img src="https://how2j.cn/tmall/img/site/ensure.png">
+            </a>
+        </div>
+        <div class="footer_des">
+            <div class="descColumn">
+                <span class="descColumnTitle">
+                    购物指南
+                </span>
+                <a href="#">免费注册</a>
+                <a href="#">开通支付宝</a>
+                <a href="#">支付宝充值</a>
+            </div>
+            <div class="descColumn">
+                <span class="descColumnTitle">
+                    天猫保障
+                </span>
+                <a href="#">发票保障</a>
+                <a href="#">售后规则</a>
+                <a href="#">缺货赔付</a>
+            </div>
+            <div class="descColumn">
+                <span class="descColumnTitle">
+                    支付方式
+                </span>
+                <a href="#">快捷支付</a>
+                <a href="#">信用卡</a>
+                <a href="#">蚂蚁花呗</a>
+                <a href="#">货到付款</a>
+            </div>
+            <div class="descColumn">
+                <span class="descColumnTitle">
+                    商家服务
+                </span>
+                    <a href="#">商家入驻</a>
+                    <a href="#">商家中心</a>
+                    <a href="#">天猫智库</a>
+                    <a href="#">天猫规则</a>
+                    <a href="#">物流服务</a>
+                    <a href="#">瞄言瞄语</a>
+                    <a href="#">运营服务</a>
+            </div>
+            <div class="descColumn">
+                <span class="descColumnTitle">
+                    手机天猫
+                </span>
+                <a href="#nowhere"><img src="https://how2j.cn/tmall/img/site/ma.png"></a>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <img src="https://how2j.cn/tmall/img/site/cateye.png" class="cateye" id="cateye">
+        <div class="copyright">
+            <div class="white_link">
+                <a href="#nowhere">关于天猫</a>
+                <a href="#nowhere"> 帮助中心</a>
+                <a href="#nowhere">开放平台</a>
+                <a href="#nowhere">  诚聘英才</a>
+                <a href="#nowhere">联系我们</a>
+                <a href="#nowhere">网站合作</a>
+                <a href="#nowhere">法律声明</a>
+                <a href="#nowhere">知识产权</a>
+                <a href="#nowhere">  廉正举报 </a>  
+            </div>
+            <div class="white_link">
+                <a href="#nowhere">阿里巴巴集团</a><span class="slash">|</span>
+                <a href="#nowhere">淘宝网</a><span class="slash">|</span>
+                <a href="#nowhere">天猫 </a><span class="slash">|</span>
+                <a href="#nowhere"> 聚划算</a><span class="slash">|</span>
+                <a href="#nowhere">全球速卖通</a><span class="slash">|</span>
+                <a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
+                <a href="#nowhere">1688</a><span class="slash">|</span>
+                <a href="#nowhere">阿里妈妈</a><span class="slash">|</span>
+                <a href="#nowhere">  阿里旅行·去啊  </a><span class="slash">|</span>
+                <a href="#nowhere">  阿里云计算    </a><span class="slash">|</span>
+                <a href="#nowhere">  阿里通信     </a><span class="slash">|</span>
+                <a href="#nowhere">  YunOS    </a><span class="slash">|</span>
+                <a href="#nowhere">  阿里旅行·去啊  </a><span class="slash">|</span>
+                <a href="#nowhere">   万网  </a><span class="slash">|</span>
+                <a href="#nowhere">  高德   </a><span class="slash">|</span>
+                <a href="#nowhere"> 优视    </a><span class="slash">|</span>
+                <a href="#nowhere">  友盟   </a><span class="slash">|</span>
+                <a href="#nowhere">  虾米   </a><span class="slash">|</span>
+                <a href="#nowhere">  天天动听 </a><span class="slash">|</span>
+                <a href="#nowhere">  来往   </a><span class="slash">|</span>
+                <a href="#nowhere">  钉钉   </a><span class="slash">|</span>
+                <a href="#nowhere">  支付宝      </a>
+            </div>
+            <div class="license">
+                <span>增值电信业务经营许可证 : 浙B2-201100446</span>
+                <span>网络文化经营许可证 ：浙网文[2015]0295-065号</span>
+                <span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号</span>
+                <span>互联网药品信息服务资质证书编号 ：浙-（经营性）-2012-0005</span>
+                <div class="copyRightYear">© 2003-2016 TMALL.COM 版权所有</div>
+            <div>
+                <img src="https://how2j.cn/tmall/img/site/copyRight1.jpg">
+                <img src="https://how2j.cn/tmall/img/site/copyRight2.jpg">
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

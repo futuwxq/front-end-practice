@@ -1,0 +1,31 @@
+/*  */
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+/* a链接处理 */
+a {
+    color: #999999;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    color: #c40000;
+}
+/* 清除浮动 */
+.clearfix:before,.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.boldWord{
+    font-weight: bold;
+}
+.redColor{
+    color: #C40000!important;
+}
