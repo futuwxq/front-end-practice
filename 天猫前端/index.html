@@ -300,18 +300,28 @@
 <body>
     <script>
         $(function(){
-            console.log(1);
             $("#footer").load("footer.html");
             $("#header").load("header.html");
-            
+            // 把网页颜色调成灰色
+            // var nowTime = new Date().getTime();
+            // var overTime = new Date('2020/04/05 12:00:00').getTime(); 
+            // if(nowTime < overTime){
+            //     $("html").css({
+            //       '-webkit-filter':'grayscale(100%)',
+            //       '-moz-filter':'grayscale(100%)',
+            //       '-ms-filter':'grayscale(100%)',
+            //       '-o-filter':'grayscale(100%)',
+            //       //ie滤镜
+            //       'filter':'progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)',
+            //     //   ie6等低版本浏览器不需要加滤镜
+            //     '_filter':'none'
+            //     });
+            // }  
         })
     </script>
     <div class="homepageDiv">
         <script>
-
-            $(function () {
-              
-
+         $(function () {              
                 $("div.rightMenu span").mouseenter(function () {
                     var left = $(this).position().left;
                     var top = $(this).position().top;
