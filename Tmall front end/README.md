@@ -1,8 +1,31 @@
-目前这个项目只是模仿了天猫前端部分，后端还未补充。
+**项目开发环境**
 
-此项目使用Ajax技术，所有页面的header和footer部分都是通过load加载。Chrome浏览器不支持Ajax跨域问题，显示不全，详细解决参考[js加载文件跨域报错](https://blog.csdn.net/KateCateCake/article/details/79045211)。
+ 我使用的是 goole浏览器 + vscode 来编写这个项目。
 
-我使用的是 goole浏览器 + vscode 来编写这个项目，所以我是借助vscode里的Live Server插件，编辑完代码之后，点击有下角的GoLive 即可。
+**项目介绍**
+
+这个项目只是模仿了天猫前端部分，后端还未补充。
+
+本项目90%的内容是**由纯 Html CSS和JQuery完成**，主要包括14个页面。
+
+首页   
+分类页   
+查询结果页   
+ 产品页   
+结算页面   
+ 支付页面   
+ 支付成功页面   
+ 购物车页面   
+我的订单页面   
+确认收货页面   
+确认收货成功页面   
+ 进行评价页面   
+ 登录页面   
+注册页面   
+
+此外项目使用Ajax技术，所有页面的header和footer部分都是通过load加载。Chrome浏览器不支持Ajax跨域问题，显示不全，详细解决参考[js加载文件跨域报错](https://blog.csdn.net/KateCateCake/article/details/79045211)。
+
+---
 
 最近时逢4.4号疫情哀悼日，各网站网页颜色是灰调，借鉴大神的帖子，我在index页面应用可这一技术。
 
@@ -10,10 +33,10 @@
 
     获取此刻时间，这个时间是动态的
     var nowTime = new Date().getTime(); 
-
+    
     <!-- 设置页面灰调的结束日期 -->
     var overTime = new Date('2020/04/05 12:00:00').getTime(); 
-
+    
     if(nowTime < overTime){
     <!-- html设置灰色滤镜 -->
         $("html").css({

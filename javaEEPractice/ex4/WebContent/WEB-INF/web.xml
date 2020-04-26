@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>ex4</display-name>
+	<welcome-file-list>
+		<welcome-file>SelectBeer.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>ShoppingCart</servlet-name>
+		<servlet-class>lesson.j2ee.ex4.ShoppingCart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShoppingCart</servlet-name>
+		<url-pattern>/ShoppingCart.do</url-pattern>
+	</servlet-mapping>
+	<!-- 统计啤酒颜色选择人数 -->
+	<filter>
+		<filter-name>BeerRequest</filter-name>
+		<filter-class>lesson.j2ee.ex4.BeerRequestFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>BeerRequest</filter-name>
+		<url-pattern>/BeerList.jsp</url-pattern>
+	</filter-mapping>
+	<!-- 过滤get请求的页面 -->
+	<filter>
+		<filter-name>GetRequest</filter-name>
+		<filter-class>lesson.j2ee.ex4.GetRequestFilter</filter-class>
+		<init-param>
+			<param-name>includePage</param-name>
+			<!-- 对主页面不进行过滤 -->
+			<param-value>/ex4/SelectBeer.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>redirectPath</param-name>
+			<!-- 未通过跳转到主界面 -->
+			<param-value>/SelectBeer.jsp</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>GetRequest</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<!-- 过滤动态Include的页面 -->
+	<filter>
+		<filter-name>IncludeResponse</filter-name>
+		<filter-class>lesson.j2ee.ex4.IncludeResponseFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>IncludeResponse</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+	<!-- 过滤页面并跳转到主页面 -->
+	<filter>
+		<filter-name>URLRequest</filter-name>
+		<filter-class>lesson.j2ee.ex4.URLRequestFilter</filter-class>
+		<init-param>
+			<!-- 对指定过滤参数之外后缀进行过滤 -->
+			<param-name>includeStrings</param-name>
+			<param-value>.jsp;.html;.png;ShoppingCart.do;</param-value>
+		</init-param>
+		<init-param>
+			<!--未通过跳转到主界面  -->
+			<param-name>redirectPath</param-name>
+			<param-value>/SelectBeer.jsp</param-value>
+		</init-param>
+		<init-param>
+			<!-- Y:过滤无效 -->
+			<param-name>disableFilter</param-name>
+			<param-value>N</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>URLRequest</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<!-- 实现对页面上输出文本的大写转化 -->
+	<filter>
+		<filter-name>UpperCase</filter-name>
+		<filter-class>lesson.j2ee.ex4.UpperCaseFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UpperCase</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>MyFirstTag</taglib-uri>
+			<taglib-location>/WEB-INF/tld/MyTag.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>
