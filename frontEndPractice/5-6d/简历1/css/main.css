@@ -1,0 +1,25 @@
+.container {
+    width: 649px;
+    height: 798px;
+    padding:10px;
+    box-shadow: 0 0 2px #cccccc;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 600;
+    color:#454545;
+}
+
+.infor .item,
+.contact-way .item {
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.contact-way .item .underline {
+    text-decoration: underline;
+    color: blue;
+}
+
+.small-head {
+    margin-top: 10px;
+}

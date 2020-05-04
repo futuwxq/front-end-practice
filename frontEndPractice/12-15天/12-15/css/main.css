@@ -1,0 +1,464 @@
+* {
+    box-sizing: border-box;
+    /* background: rgba(0, 0, 0, .1); */
+}
+
+/* html {
+    height: 100%;
+    display: table;
+  } */
+  
+body {
+    max-height: 820px;
+    height: 100%;
+    min-width: 1300px;
+    overflow: auto;
+    margin: 0;
+    background: #ffffff;
+    font-size: 14px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);
+    /* line-height: 1.7; */
+}
+
+a {
+    text-decoration: none;
+}
+
+.Side_bar {
+    /* position: fixed;
+    top: 0;
+    left: 0; */
+    float: left;
+    background:#222c3c;
+    width:350px; 
+    /* display: table-cell; */
+    min-height: 800px;
+}
+
+.Side_bar .Primary_menu {
+    width:100px;
+    float: left;
+    height: 100%;
+    margin-right: 30px;
+    background: #1d2531;
+    min-height: 820px;
+}
+
+.Side_bar .Primary_menu-top img {
+    padding:12px 20px ;
+}
+.Side_bar .Primary_menu-top img:first-child{
+    margin-top: 15px;
+}
+
+.Side_bar .Primary_menu-bottom img{
+    position: absolute;
+    bottom: 20px;
+}
+.Side_bar .Primary_menu-bottom img:first-child{
+    left: 26px;
+}
+
+.Side_bar .Primary_menu-bottom img:last-child{
+    left: 58px;
+}
+
+.Side_bar .Second_menu {
+    padding:34px 30px 20px 30px;
+    /* color:  */
+    height: 100%;
+    color: rgb(183, 192, 205);
+    overflow: hidden;
+
+}
+
+.Second_menu_part1-title,
+.Second_menu_part2-title,
+.Second_menu_part3-title
+ {
+    font-size: 12px;
+    color: rgb(91, 103, 121);
+    text-transform: uppercase;
+}
+.Second_menu .Settings ,
+.Side_bar .Second_menu button,
+.Side_bar .Second_menu img.alert {
+    float: right;
+}
+
+.Side_bar .Second_menu button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: #2a9ef6;
+    border-radius: 12px;
+    padding: 0;
+    color: #ffffff;
+
+}
+.Side_bar .Second_menu_part1_item,
+.Side_bar .Second_menu_part2_item,
+.Side_bar .Second_menu_part3_item {
+    display: block;
+    margin: 20px 0;
+}
+
+.Side_bar .Second_menu .Server_capacity {
+    position: absolute;
+    bottom: 20px;
+    left: 130px;
+    color: #fff;
+    line-height: 3;
+}
+
+.Side_bar .Second_menu .Server_capacity .Goals {
+    margin-right: 20px;
+}
+
+.Side_bar .Second_menu .Server_capacity .fill,
+.Side_bar .Second_menu .Server_capacity .base  {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* padding-top: 20px; */
+}
+
+
+.Chat_message {
+    margin-left: 350px;
+    /* padding-left: 30px; */
+    
+}
+
+.Chat_message .Top_bar {
+    margin-left: 30px;
+}
+.Chat_message .Top_bar .title {
+    font-size: 24px;
+    color: rgb(53, 64, 82);
+    line-height: 80px;
+}
+
+.Chat_message .Top_bar .infor {
+    position: fixed;
+    right: 0;
+    top:0;
+    height: 80px;
+}
+
+.Chat_message .Top_bar .infor:before {
+
+    content:"";
+    
+    display:inline-block;
+    
+    height:100%;
+    
+    vertical-align:middle;
+    
+    }
+.Chat_message .Top_bar .infor >* {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Chat_message .Top_bar .infor .Personal {
+    
+    line-height: 1.5;
+    margin-left: 11px;
+}
+
+.Chat_message .Top_bar .infor .Personal .name {
+    font-size: 16px;
+    color: rgb(35, 153, 241);
+}
+
+.Chat_message .Top_bar .infor .Personal .post {
+    color: rgb(181, 181, 181);
+}
+
+.Chat_message .Top_bar .infor .dropdown {
+    margin: 0 35px 0 39px;
+}
+
+.Chat_message-Main_flex {
+    display: flex; 
+}
+
+.Chat_message-Main_flex-Friends {
+    width: 400px;
+    border-right: 1px solid  rgb(230, 233, 236);
+}
+
+.Chat_message-Main_flex-Messages {
+     flex: 1 ;
+}
+
+.Chat_message hr {
+
+    margin: 0px;
+    border-color: rgb(230, 233, 236);
+}
+
+.Chat_message-Main_flex-Friends .Search_bar {
+    position: relative;
+    height: 72px;
+    padding-left: 30px;
+}
+
+.Chat_message-Main_flex-Friends .Search_bar input {
+    margin-top: 15px;
+    width: 338px;
+    height: 37px;
+    border:1px solid rgb(230, 233, 236);
+    border-radius: 5px;
+    outline: none;
+    text-indent: 10px;
+   
+}
+
+.Chat_message-Main_flex-Friends .Search_bar  .icon {
+    position: absolute;
+    right: 35px;
+    top: 25px;
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list {
+    overflow-y: auto;
+}
+.Chat_message-Main_flex-Friends .Frinends_list-item {
+    height: 130px;
+    padding: 20px 20px 20px 30px;
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item .avatar {
+    float: left;
+    margin-right: 10px;
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item .time {
+    float: right;
+    color: rgb(127, 143, 164);
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item button,
+.Chat_message-Main_flex-Messages .Statues_colum .fl button {
+    padding: 0;
+    border-width: 1px;
+    border-radius: 50%;
+    background: rgb(25,145,235) ;
+    /* padding-bottom: 5px; */
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item .name_tool .dot,
+.Chat_message-Main_flex-Messages .Statues_colum .fl button {
+    width: 8px;
+    height:8px;
+}
+.Chat_message-Main_flex-Friends .Frinends_list-item .name_tool .name {
+    display: inline-block;
+    font-size: 16px;
+    color:#00aaff;
+    line-height: 1.7;
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item .name_tool .tool {
+    color: rgb(181, 181, 181);
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item .unread {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    float: right;
+    margin-top: 20px;
+}
+
+.Chat_message-Main_flex-Friends .Frinends_list-item .article {
+    margin-top:10px;
+    line-height: 1.7;
+    font-size: 12px;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum {
+    height: 72px;
+    overflow: hidden;
+    border-bottom: 1px solid rgb(230, 233, 236);
+
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fl {
+    float: left;
+    padding: 25px 0 25px 30px;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr {
+    float: right;
+    height: 100%;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.Chat_message-Main_flex-Messages .Statues_colum .fl .Bessie {
+    font-size: 18px;
+    font-family: "ProximaNova";
+    color: rgb(88, 93, 104);
+    /* line-height: 1.2; */
+}
+/* .Chat_message-Main_flex-Messages .Statues_colum .fl button {
+    padding-bottom: 5px;
+} */
+.Chat_message-Main_flex-Messages .Statues_colum .fr >* {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr .pages {
+    color: rgb(86, 104, 138);
+    padding:0 15px 0 45px;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr .turning_page {
+    margin-right:20px; 
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr button {
+   border:  1px solid rgb(230, 233, 236);
+    width: 40px;
+    height: 33px;
+    padding: 0;
+    background: #f4f6f9;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr .three_tool,
+.Chat_message-Main_flex-Messages .Statues_colum .fr .turning_page {
+    font-size: 0;
+}
+.Chat_message-Main_flex-Messages .Statues_colum .fr .add_friends,
+.Chat_message-Main_flex-Messages .Statues_colum .fr .turning_page button:first-child {
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+
+.Chat_message-Main_flex-Messages .Statues_colum .fr .delte_friends,
+.Chat_message-Main_flex-Messages .Statues_colum .fr .turning_page button:last-child{
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list  {
+    line-height: 1.7;
+}
+.Chat_message-Main_flex-Messages .Message-list .Today,
+.Chat_message-Main_flex-Messages .Message-list .Tuesday {
+    padding: 0 30px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .Message_1,
+.Chat_message-Main_flex-Messages .Message-list .Message_2,
+.Chat_message-Main_flex-Messages .Message-list .Message_3,
+.Chat_message-Main_flex-Messages .Message-list .Message_4, 
+.Chat_message-Main_flex-Messages .Message-list .Message_5 {
+   
+    margin:20px 0 20px 0;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .Person_infor {
+     overflow: hidden;
+}
+.Chat_message-Main_flex-Messages .Message-list .avatar {
+    float: left;
+    margin-right:20px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .name {
+    font-size: 16px;
+    color: rgb(88, 93, 104);
+    margin-right: 10px;
+    line-height: 2;
+}
+
+.Chat_message-Main_flex-Messages .Message-list p {
+    margin: 0;
+}
+.Chat_message-Main_flex-Messages .Message-list .time {
+    color: rgb(127, 143, 164);
+}
+
+.Chat_message-Main_flex-Messages .Message-list .line_Tuesday {
+    display: flex;
+    align-items: center;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .line_Tuesday .line {
+    flex: 1;
+    border-top: 1px solid rgb(230, 233, 236);
+    
+}
+
+.Chat_message-Main_flex-Messages .Message-list .line_Tuesday .text
+ {
+    /* vertical-align: top; */
+    padding:0  20px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .Tuesday .Message_4 .pictures {
+    margin-top: 20px;
+}
+.Chat_message-Main_flex-Messages .Message-list .Tuesday .Message_4 .pictures .pic_1 {
+    float: left;
+}
+
+
+.Chat_message-Main_flex-Messages .Message-list .Tuesday .Message_4 .pictures .pic {
+    position: relative;
+    margin-left: 176px;
+}
+.Chat_message-Main_flex-Messages .Message-list .Tuesday .Message_4 .pictures .pic .mask{
+   position: absolute;
+    top:14px;
+    left: 25px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .Line {
+    height: 0;
+    text-align: center;
+    border-top: 1px solid rgba(35, 153, 241, 0.4);
+    color: #2399f1;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .Line .text {
+    position: relative;
+    top:-14px;
+    background: #fff;
+    padding: 0 20px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .nwe_passages {
+   padding: 0 30px;
+}
+
+.Chat_message-Main_flex-Messages .Message-list .shuru_kuang {
+    position: relative;
+}
+.Chat_message-Main_flex-Messages .Message-list .nwe_passages input {
+    width: 94%;
+    height:55px;
+    background: none;
+    outline: none;
+    border: 1px solid rgb(230, 233, 236);
+    border-radius: 7px;
+    text-indent: 75px;
+
+}
+
+.Chat_message-Main_flex-Messages .Message-list .shuru_kuang img {
+    position: absolute;
+    top:0;
+    left: 0;
+}
