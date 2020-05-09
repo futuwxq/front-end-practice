@@ -1,0 +1,129 @@
+//设计图为750px
+//引入common.less
+@import "common";
+//原稿的html字体
+@baseFont:50px;
+* {
+    box-sizing: border-box;
+}
+body {
+    min-width: 320px;
+    width:750rem / @baseFont; //750px下，html字体是50px。
+    margin: 0 auto!important  ;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background: #F2F2F2;
+    font-size: 25rem / @baseFont; 
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+.nav-top {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 15rem;
+    height: 88rem / @baseFont;
+    background-color: #ffc001;
+    font-size: 25rem / @baseFont;
+
+
+    .clasify {
+        width: 44rem / @baseFont;
+        height: 70rem / @baseFont;
+        margin: 11rem / @baseFont 25rem / @baseFont 7rem / @baseFont 24rem / @baseFont;
+        background: url(../images/classify.png) no-repeat;
+        background-size:44rem / @baseFont, 70rem / @baseFont;
+    }
+
+    .search {
+        flex: 1;
+        margin: 12rem / @baseFont 0;
+        input {            
+            height:  66rem / @baseFont;
+            width: 100%;
+            line-height:66rem / @baseFont ;
+            background-color: #fff2cc; 
+            padding-left: 55rem / @baseFont;
+            outline: none;
+            border-radius: 33rem / @baseFont;
+            // border: 0;
+            border:none ;
+        }
+    }
+
+    .login {
+        width: 75rem / @baseFont;
+        height: 70rem / @baseFont;
+        line-height: 70rem / @baseFont;
+        text-align: center;
+        margin: 10rem / @baseFont;
+        color: #fff;
+    }
+}
+.banner {
+    width: 100%;
+    height: 368rem / @baseFont;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.ad {
+    display: flex;
+    a {
+        flex:1;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100rem / @baseFont;
+    a {
+        display: flex;
+        flex-direction: column;
+        flex: 20%;
+        height: 140rem / @baseFont;
+        align-items: center;
+        justify-content: space-around;
+       img {
+           width: 82rem / @baseFont;
+           height: 82rem / @baseFont;
+       }
+    }
+}
+
+.category {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background-color: #fff;
+    width: 15rem;
+    height: 100rem / @baseFont;
+    text-align: center;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        img {
+            width: 48rem / @baseFont;
+            height: 48rem / @baseFont;
+            margin: 12rem / @baseFont 51rem / @baseFont 0;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 28rem / @baseFont;
+        }
+    }
+}
