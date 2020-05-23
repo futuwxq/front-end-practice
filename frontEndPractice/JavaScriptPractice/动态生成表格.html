@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态生成表格</title>
+    <style>
+        table {
+            width: 300px;
+            margin: 100px auto;
+            text-align: center;
+            font-size: 14px;
+            border-collapse: collapse;
+        }
+        
+        tr {
+            height: 30px;
+        }
+        
+        thead tr {
+            background-color: skyblue;
+            font-weight: bold;
+        }
+        
+        td {
+            border-bottom: 1px solid #d7d7d7;
+            font-size: 12px;
+            color: blue;
+        }
+        
+        tr a {
+            /* float: right; */
+            color: #666;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>科目</td>
+                <td>学分</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        // 创建对象的方式
+        var datas = [{
+            name: '张三',
+            subject: 'java',
+            score: 100
+
+        }, {
+            name: '李四',
+            subject: 'javaEE',
+            score: 99
+        }, {
+            name: '王五',
+            subject: 'javaEE',
+            score: 98
+        }, {
+            name: '小刘',
+            subject: 'java',
+            score: 97
+        }];
+        // console.log(datas[0]['name']);
+        var content = document.querySelector('tbody');
+        // 2. 生成表格内容，先创建一个tr追加在tbody后面，每个td直接追加在tr后面完成复制
+        // 每个td取得数据里的第i个对象的属性名字为‘k’的值
+        for (var i = 0; i < datas.length; i++) {
+            // 生成每个tr的内容
+            // 创建tr
+            var tr = document.createElement('tr');
+            content.appendChild(tr);
+
+            // for (var  = 0; i < datas[i].length; i++) { 变量错误，对象的遍历可以用for in
+            for (var k in datas[i]) {
+                // console.log(k);
+                // 创建td
+                var td = document.createElement('td');
+                // 把对象里面的属性值 datas[i][k] 给 td 
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+
+            // 常见删除td
+            var del = document.createElement('td');
+            del.innerHTML = "<a href='javascript:;'>删除</a>";
+            // append的参数是一个节点 不是字符串
+            // tr.appendChild('del');
+            tr.appendChild(del);
+        }
+        //4 删除操作
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                // tbody删除每个a的父节点的父节点 tr
+                content.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+
+</html>
