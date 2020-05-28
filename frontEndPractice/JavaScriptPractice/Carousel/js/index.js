@@ -128,7 +128,7 @@ window.addEventListener('load', function() {
         ol.children[circle].className = 'current';
     }
     // 8.自动播放轮播图
-    var timer = this.setInterval(function() {
+    var timer = setInterval(function() {
         // 8.1手动调用点击事件
         arrowR.click();
     }, 2000)
