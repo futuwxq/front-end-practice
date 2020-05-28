@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
         arrowL.style.display = 'none';
         arrowR.style.display = 'none';
         // 8.3 鼠标离开foucus 开始自动播放
-        var timer = this.setInterval(function() {
+        var timer = setInterval(function() {
             arrowR.click();
         }, 2000)
     });
