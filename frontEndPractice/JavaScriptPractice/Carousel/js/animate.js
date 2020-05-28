@@ -7,9 +7,10 @@ function animate(obj, target, callback) {
         if (obj.offsetLeft == target) {
             clearInterval(obj.timer);
             // 回调函数写到定时器结束里面
-            if (callback) {
-                callback();
-            }
+            // if (callback) {
+            //     callback();
+            // }
+            callback && callback();
         }
         // 把每次加1px改成一个逐渐变小的变量
         obj.style.left = obj.offsetLeft + step + 'px';
