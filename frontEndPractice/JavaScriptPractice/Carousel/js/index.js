@@ -28,15 +28,15 @@ window.addEventListener('load', function() {
         arrowL.style.display = 'none';
         arrowR.style.display = 'none';
         // 8.3 鼠标离开foucus 开始自动播放
-        var timer = setInterval(function() {
+        timer = setInterval(function() {
             arrowR.click();
         }, 2000)
     });
     // 2.动态生成小圆圈
     var ul = document.querySelector('.carousel');
-    var lis = ul.querySelectorAll('li');
-    var ol = this.document.querySelector('ol');
-    for (var i = 0; i < lis.length; i++) {
+    // var lis = ul.querySelectorAll('li');
+    var ol = document.querySelector('ol');
+    for (var i = 0; i < ul.children.length; i++) {
         var li = this.document.createElement('li');
         li.setAttribute('index', i);
         ol.appendChild(li);
@@ -61,42 +61,43 @@ window.addEventListener('load', function() {
             animate(ul, -index * focusWidth);
         })
     }
+    ol.children[0].className = 'current';
     // 4.1 克隆轮播图的第1张图片作为第5张照片 深克隆
     var first = ul.children[0].cloneNode(true);
     ul.appendChild(first);
-    ol.children[0].className = 'current';
     // 4. 点击轮播图的右侧按钮进行播放
     var num = 0;
     var circle = 0; // circle 控制小圆圈的播放
     // 9.设置节流阀
     var flag = true;
     arrowR.addEventListener('click', function() {
-            if (flag) {
-                flag = false; //9.1先关闭节流阀
-                num++;
-                // 当num=3的时候，处于第4张照片，点击右侧按钮
-                // 直接采用无缝连接 此时轮播到第5张照片，立即跳转到第1张照片
-                if (num == ul.children.length - 1) {
-                    ul.style.left = 0;
-                    num = 0; //重新计数
-                }
-                // 9.2 利用回调函数当动画结束后，打开节流阀
-                animate(ul, -num * focusWidth, function() {
-                    flag = true;
-                });
-                // 5.点击按钮同步小圆圈状态 这里会有bug 导致点击箭头按钮和小圆圈事件不同步 circle = num = index 解决 
-                circle++;
-                // circle = 4 ,要重新开始计数
-                // if (circle == ol.children.length) {
-                //     circle = 0;
-                // }
-                circle = circle == ol.children.length ? 0 : circle;
-                circleChange();
+        if (flag) {
+            flag = false; //9.1先关闭节流阀
+
+            // 当num=4的时候，处于第4张照片并且点击右侧按钮
+            // 直接采用无缝连接，轮播到第5张照片后，立即跳转到第1张照片
+            if (num == ul.children.length - 1) {
+                ul.style.left = 0;
+                num = 0; //重新计数
             }
+            num++;
+            // 9.2 利用回调函数当动画结束后，打开节流阀
+            animate(ul, -num * focusWidth, function() {
+                flag = true;
+            });
+            // 5.点击按钮同步小圆圈状态 这里会有bug 导致点击箭头按钮和小圆圈事件不同步 circle = num = index 解决 
+            circle++;
+            // circle = 4 ,要重新开始计数
+            // if (circle == ol.children.length) {
+            //     circle = 0;
+            // }
+            circle = circle == ol.children.length ? 0 : circle;
+            circleChange();
+        }
 
 
-        })
-        // 6. 点击轮播图的左侧按钮进行播放
+    });
+    // 6. 点击轮播图的左侧按钮进行播放
     arrowL.addEventListener('click', function() {
         if (flag) {
             flag = false;
@@ -119,7 +120,7 @@ window.addEventListener('load', function() {
         }
 
 
-    })
+    });
 
     function circleChange() {
         for (var i = 0; i < ol.children.length; i++) {
@@ -127,10 +128,10 @@ window.addEventListener('load', function() {
         }
         ol.children[circle].className = 'current';
     }
-    // 8.自动播放轮播图
+    // 8. 自动播放轮播图
     var timer = setInterval(function() {
         // 8.1手动调用点击事件
         arrowR.click();
-    }, 2000)
+    }, 2000);
 
 })
