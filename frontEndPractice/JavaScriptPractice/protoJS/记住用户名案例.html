@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记住用户名案例</title>
+    <style>
+        body {
+            margin: 300px;
+        }
+        
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="uname" id="uname" value="用户名"> <input type="checkbox" name="" id="remember"> 记住用户名
+    <!-- <button type="submit">提交</button> -->
+    <script>
+        var uname = document.querySelector('#uname');
+        var rem = document.querySelector('#remember');
+        uname.onfocus = function() {
+            // this.innerHTML = '';
+            if (this.value === '用户名') {
+                this.value = '';
+            }
+
+            this.style.color = 'rgba(51, 51, 51, 1)';
+        }
+
+        uname.onblur = function() {
+                // this.innerHTML = '';
+                if (this.value === '') {
+                    this.value = '用户名';
+                }
+                this.style.color = 'rgb(153, 153, 153)';
+            }
+            // 1. 先检查本地是否存储了uname这个数据
+        if (localStorage.getItem('uname')) {
+            // 把值赋给uname
+            uname.value = localStorage.getItem('uname');
+            rem.checked = true;
+        }
+        // 2. 监控rem的变化事件
+        rem.addEventListener('change', function() {
+            if (this.checked) {
+                // 保存用户名
+                localStorage.setItem('uname', uname.value);
+            } else {
+                // 移除用户名
+                localStorage.removeItem('uname');
+            }
+        })
+    </script>
+</body>
+
+</html>
