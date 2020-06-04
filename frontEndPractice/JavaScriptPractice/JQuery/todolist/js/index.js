@@ -30,12 +30,43 @@ $(function() {
     });
     // 3.点击待办事项复选框,就可以把当前数据添加到已完成事项里面
     $("ul , ol").on("click", "input", function() {
+            var data = getDate(); //获取数据
+            var index = $(this).siblings("a").attr("id");
+            // console.log(data[index]);
+            data[index].done = $(this).prop("checked");
+            saveDate(data); //保存数据
+            load(); //重新渲染数据
+        })
+        // 4. 双击文字的时候，在里面生成一个文本框, 当失去焦点或者按下回车然后把文本框输入的值给原先元素即可。
+    $("ul , ol ").on("dblclick", "p", function() {
         var data = getDate(); //获取数据
         var index = $(this).siblings("a").attr("id");
-        console.log(data[index]);
-        data[index].done = $(this).prop("checked");
-        saveDate(data); //保存数据
-        load(); //重新渲染数据
+
+        var content = $(this).text();
+        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty(); //双击选中会选中p元素的文字，禁用
+        // console.log(content);
+        // 在p里面添加一个文本框
+        $(this).html("<input type='text'/>");
+        var input = $(this).children("input");
+        input.val(content);
+        input.select(); //选中文本框的所有文字，方便统一修改
+        input.on({
+            blur: function() {
+                // if ($(this).val == "") return;
+                $(this).parent().text($(this).val()); //text()方法向p里面新添加了内容，因此input会消失。
+                data[index].title = $(this).val();
+                // console.log(data);
+                saveDate(data); //保存数据
+                load(); //重新渲染数据
+            },
+            keyup: function(e) {
+                if (e.keyCode === 13) {
+                    // console.log(this);
+                    $(this).blur(); //因为blur方法的结果和这个结果一样，所以手动调用
+                }
+            }
+        });
+
     })
 
     // 读取本地存储的数据
