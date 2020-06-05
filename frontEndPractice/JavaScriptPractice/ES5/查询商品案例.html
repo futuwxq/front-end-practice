@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品查询</title>
+    <style>
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+        
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+        
+        input {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询: <input type="text" class="start"> - <input type="text" class="end"> <button class="search-price">搜索</button> 按照商品名称查询: <input type="text" class="product"> <button class="search-pro">查询</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '荣耀',
+            price: 1299
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        }, ];
+        // 1.获取数据
+        var tbody = document.querySelector('tbody');
+        var searchprice = document.querySelector('search-price');
+        var start = document.querySelector('.start');
+        var end = document.querySelector('.end');
+        var searchpro = document.querySelector('.search-pro');
+        var product = document.querySelector('.product');
+        // 2.渲染数据 - foreach
+        getData(data);
+
+        function getData(myData) {
+            tbody.innerHTML = ""; //先清空html
+            myData.forEach(function(value) {
+                // console.log(arr); // value是一个对象
+                var tr = document.createElement("tr");
+                tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td> ';
+                tbody.appendChild(tr);
+
+            });
+        }
+        // 3.按照价格区间显示数据 - filter()
+
+        searchprice.addEventListener('click', function() {
+            var newData = data.filter(function(value) {
+                return start.value <= value.price <= end.value;
+            });
+            getData(newData);
+        });
+        // 4.输入品牌，只显示品牌商品，因为表格的品牌只出现一次，用some效率更高
+
+        searchpro.addEventListener('click', function() {
+            var arrp = [];
+            data.some(function(value) {
+                if (value.pname === product.value) {
+                    arrp.pop(value);
+                    // getData(value);
+                    return true;
+                }
+            });
+            getData(arrp);
+        })
+    </script>
+</body>
+
+</html>

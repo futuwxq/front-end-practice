@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+</head>
+
+<body>
+    <script>
+        // function Star(uname, age) {
+        //     this.uname = uname;
+        //     this.age = age;
+        // }
+        // Star.prototype.sing = function() {
+        //     console.log('我会唱歌');
+        // }
+        // var ldh = new Star('刘德华', 18);
+        // console.dir(ldh);
+        // console.log(Star);
+        // console.log(ldh.__proto__ === Star.prototype);
+        // console.log(ldh.__proto__);
+        // console.log(Star.prototype);
+
+        Array.prototype = {
+            // constructor: Array,
+            sum: function() {
+                var sum = 0;
+                for (var i = 0; i < this.length; i++) {
+                    sum += this[i];
+                }
+                return sum;
+            }
+
+        }
+        var arr = [1, 2, 3];
+        console.log(arr.sum());
+        console.log(Array.prototype);
+        console.log(Array.prototype.constructor);
+        // var arr1 = new Array(11, 22, 33);
+        // console.log(arr1.sum());
+    </script>
+</body>
+
+</html>
