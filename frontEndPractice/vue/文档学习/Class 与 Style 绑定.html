@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 与 Style 绑定</title>
+</head>
+
+
+<body>
+    <div id="main">
+        <!-- <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div> -->
+        <div v-bind:class="classObject"></div>
+        <div v-bind:style="{color:activeColor,fontSize:fontSize + 'px'}">红色字体大小20px</div>
+        <div v-bind:style="styleObject">红色字体大小13px</div>
+    </div>
+
+    <div id="arr">
+        <div v-bind:class="[activeClass, errorClass]"></div>
+        <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#main',
+            data: {
+                isActive: true,
+                error: null,
+                activeColor: 'yellow',
+                fontSize: 20,
+                styleObject: {
+                    color: 'red',
+                    fontSize: '13px'
+                }
+            },
+            computed: {
+                classObject: function() {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+            }
+        })
+        var avm = new Vue({
+            el: '#arr',
+            data: {
+                isActive: true,
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        })
+    </script>
+</body>
+
+</html>

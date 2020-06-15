@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求最大数和最小数</title>
+</head>
+
+<body>
+    <p>详见控制台</p>
+    <script>
+        var arr = [15, 45, 2, 99, 3];
+        console.log(arr);
+        var max = Math.max.apply(Math, arr); //apply方法返回值就是函数的返回值，因此这里返回的是max这个函数的返回值，也就是（最大值）
+        var min = Math.min.apply(Math, arr);
+        console.log('max:' + max + '\nmin:' + min);
+    </script>
+</body>
+
+</html>

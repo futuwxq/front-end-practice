@@ -1,9 +1,9 @@
-var that;
+// var that; //class 需要一直和 that绑定在一起，太麻烦了，可以考虑bind方法
 class Tab {
     constructor(id) {
             // 获取元素
             // console.log(1);
-            that = this;
+            // that = this;
             this.tab = document.querySelector(id);
             this.add = this.tab.querySelector('.tabadd');
             this.ul = this.tab.querySelector('.tabnav ul:first-child');
@@ -15,12 +15,12 @@ class Tab {
     init() {
         this.updateNode();
         //给+添加点击事件
-        this.add.onclick = this.addTab;
+        this.add.onclick = this.addTab.bind(this.add, this);
         // 给每个小li绑定点击事件
         for (var i = 0; i < this.lis.length; i++) {
             this.lis[i].index = i;
-            this.lis[i].onclick = this.toggleTab; //这里没有()是点击之后才会调用这个事件
-            this.close[i].onclick = this.delTab;
+            this.lis[i].onclick = this.toggleTab.bind(this.lis[i], this); //这里没有()是点击之后才会调用这个事件
+            this.close[i].onclick = this.delTab.bind(this.close[i], this);
             this.spans[i].ondblclick = this.editTab;
             this.sections[i].ondblclick = this.editTab;
         }
@@ -41,7 +41,7 @@ class Tab {
             }
         }
         //1 切换功能
-    toggleTab() {
+    toggleTab(that) {
             that.clearClass(); //实例对象调用了这个类
             // console.log(this.index);
             // 当前li的下边框隐藏，添加active类
@@ -50,7 +50,7 @@ class Tab {
             that.sections[this.index].className = 'conactive'; //这里的this指向的是点击的li，而不是实例，指向实例，此时用that替代
         }
         //2 添加功能
-    addTab() {
+    addTab(that) {
             that.clearClass();
             // console.log(this);
             // 2.1 创建li 和section
@@ -62,7 +62,7 @@ class Tab {
             that.init();
         }
         //3 删除功能 
-    delTab(e) {
+    delTab(that, e) {
             e.stopPropagation(); //点击x冒泡会触发li的点击事件
             var index = this.parentNode.index; //小li的索引号
             // console.log(index);
