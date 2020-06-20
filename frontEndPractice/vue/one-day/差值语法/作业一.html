@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<!-- 作业一：点击列表中的哪一项，那么该项的文字变成红色 -->
+<style>
+    .active {
+        color: red;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(meg,index) in movies" :class="{'active':isActive == index } " v-on:click="toggleClor(index)">{{meg}} </li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: false,
+                movies: ['美丽人生', '乱世佳人', '岁月神偷', '阿甘正传', '海贼王']
+            },
+            methods: {
+                toggleClor(index) {
+                    debugger
+                    console.log(this);
+                    this.isActive = index;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

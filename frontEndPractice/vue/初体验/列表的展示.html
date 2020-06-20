@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表的展示</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- 通过 v-for展示数组 -->
+            <li v-for="item in fruits">{{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                fruits: ['apple', 'pear', 'orange']
+            }
+        })
+        app.fruits.push('cherry')
+    </script>
+</body>
+
+</html>

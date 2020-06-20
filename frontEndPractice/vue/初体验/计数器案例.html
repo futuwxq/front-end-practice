@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>当前计数: {{counter}} </h2>
+        <button v-on:click="add">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+
+    <script>
+        // 把 model 用一个对象存储
+        const obj = {
+            counter: 0,
+            message: '成功'
+        }
+        const app = new Vue({
+            el: '#app',
+            data: obj,
+            methods: {
+                add: function() {
+                    console.log('add被执行');
+                    // counter++; // counter is not defined
+                    // 这里直接使用cunter是不行的，count 是 app 的一个属性
+                    // app.counter  一般在方法里面 this 指向的是 vue 实例
+                    this.counter++
+                },
+                sub: function() {
+                    console.log('sub被执行');
+                    // 三元表达式 用的很好哦
+                    this.counter = this.counter === 0 ? 0 : this.counter--
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

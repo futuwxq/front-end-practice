@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 自己一开始写的
+        // var isPalindrome = function(s) {
+        //     //1.去除所有除字母和数字之外的字符,利用ASCII码
+        //     //1.1 字符串的字母全部转化为大写，并替换成数组类型 
+        //     let arr = s.toUpperCase().split('');
+
+        //     //1.2 定义一个数组，用来存储满足条件的字符
+        //     let arrValue = [];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         let value = arr[i].charCodeAt();
+        //         if ((value >= 48 && value <= 57) || value >= 65 && value <= 90 ) {  
+        //             arrValue.push(arr[i]);
+        //         }
+        //     }
+        //     //2 只要将数组一般长度的字母进行比较，就可以判断是否为回文串
+        //     for (let i = 0, j = arrValue.length - 1; i < arrValue.length / 2 && j > 0; i++, j--) {
+
+        //         //2.1 条件不符合就直接返回false
+        //         if (arrValue[i] !== arrValue[j]) {
+        //             return false;
+        //         }
+        //     }
+        //     return true
+        // };
+
+        // 2. 正则表达式 和 双指针
+        // var isPalindrome = function(s) {
+
+        //     //1. 用正则表达式的replace方法
+        //     let str = s.replace(/\W|_/g, '').toUpperCase();
+        //     // console.log(str);
+
+        //     //2. 通过设置left 和 right 变量控制比较次数
+        //     let left = 0;
+        //     let right = str.length - 1;
+        //     while (left < right) {
+        //         // h5新增方法，字符串中获取单个字符
+        //         if (str[left] !== str[right]) return false;
+        //         left++;
+        //         right--;
+        //     }
+        //     return true
+        // };
+
+        // 3. 正则表达式之后，比较数组和反转数组是否相同
+        var isPalindrome = function(s) {
+            //1. 用正则表达式的replace方法,并把字符串转化为数组
+            let arry = s.replace(/\W|_/g, '').toUpperCase().split('');
+            // 2. 利用数组的reverse方法,之后再把数组转化为字符串，进行比较
+            return arry.join() === arry.reverse().join();
+
+        }
+        let st = "A man, a plan, a canal: Panama";
+        // isPalindrome(st);
+        console.log(isPalindrome(st));
+    </script>
+</body>
+
+</html>
