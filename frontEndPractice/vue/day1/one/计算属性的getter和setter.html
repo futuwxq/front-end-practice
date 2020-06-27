@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性的getter和setter函数</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{fullName}}</h2>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Kaev',
+                lastName: 'Red'
+            },
+            computed: {
+                fullName: {
+                    // 只读
+                    get() {
+                        console.log('调用了fullName的get');
+                        return this.firstName + " " + this.lastName
+                    },
+                    // 这里需要传入一个newvalue的形参
+                    set(newValue) {
+                        console.log('调用了fullName的set');
+                        const names = newValue.split(' ');
+                        this.firstName = names[0];
+                        this.lastName = names[1];
+                    },
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -18,7 +18,7 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="(meg,index) in movies" :class="{'active':isActive == index } " v-on:click="toggleClor(index)">{{meg}} </li>
+            <li v-for="(meg,index) in movies" :class="{active:currentIndex == index } " @click="toggleClor(index)">{{meg}} </li>
         </ul>
     </div>
 
@@ -26,14 +26,14 @@
         var vm = new Vue({
             el: '#app',
             data: {
-                isActive: false,
-                movies: ['美丽人生', '乱世佳人', '岁月神偷', '阿甘正传', '海贼王']
+                movies: ['美丽人生', '乱世佳人', '岁月神偷', '阿甘正传', '海贼王'],
+                currentIndex: 0
             },
             methods: {
-                toggleClor(index) {
-                    debugger
+                toggleClor: function(index) {
+                    // debugger
                     console.log(this);
-                    this.isActive = index;
+                    this.currentIndex = index;
                 }
             }
         });

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性和method</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 显示一个人的名字 -->
+    <div id="app">
+        <!-- 1. 使用 {{}} 语法，但是语法比较繁琐，不适合 -->
+        <h2>{{firstName}} {{lastName}} </h2>
+        <!-- 2. 通过计算属性 会把属性缓存起来，一般只调用一次属性里面的函数-->
+        <!-- <h2>{{fullName}} </h2>
+        <h2>{{fullName}} </h2>
+        <h2>{{fullName}} </h2>
+        <h2>{{fullName}} </h2> -->
+
+        <!-- 3.通过method ,每次都会调用该方法-->
+        <h2>{{getFullName()}} </h2>
+        <h2>{{getFullName()}} </h2>
+        <h2>{{getFullName()}} </h2>
+        <h2>{{getFullName()}} </h2>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Kaev',
+                lastName: 'Red'
+            },
+            computed: {
+                fullName() {
+                    console.log('调用了fullName')
+                    return this.firstName + ' ' + this.lastName
+                }
+            },
+            methods: {
+                getFullName() {
+                    console.log('调用了getFullName()')
+                    return this.firstName + ' ' + this.lastName
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

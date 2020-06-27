@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for的key属性</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in nums">
+                {{index}} - {{item}}
+            </li>
+        </ul>
+        绑定了key
+        <ul>
+            <li v-for="(item,index) in nums" :key="item">
+                {{index}} - {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                nums: ['A', 'B', 'C', 'D', 'E']
+            },
+            methods: {}
+        });
+        vm.nums.splice(2, 0, 'F');
+    </script>
+</body>
+
+</html>

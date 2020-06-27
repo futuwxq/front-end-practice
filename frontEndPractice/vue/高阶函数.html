@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数</title>
+</head>
+
+<body>
+    <script>
+        const nums = [10, 20, 111, 222, 444, 40, 50];
+
+        // 1. 返回所有 <= 100 的元素 filter函数的使用 [10, 20, 40, 50]
+        // filter中的回调函数有一个要求: 必须返回一个boolean值
+        // true: 当返回true时, 函数内部会自动将这次回调的n加入到新的数组中
+        // false: 当返回false时, 函数内部会过滤掉这次的n
+        // n 就是相当每次遍历数组时的元素
+        let newNums = nums.filter(function(n) {
+            return n <= 100;
+        })
+        console.log(newNums);
+
+        // 2.返回新数组元素值的 2 倍  得到的结果是：[20, 40, 80, 100]
+        // map 函数的使用 也有一个回调函数 返回的是对原数组进行处理的元素（比如*2、++操作）
+        // map 函数会返回一个新数组 新数组的元素就是每次返回值 
+        let new2Nums = newNums.map(function(n) {
+            return n * 2;
+        })
+        console.log(new2Nums);
+
+        // 3.返回新数组元素的累加值  240
+        //  reduce 函数的使用  reduce 作用对数组中所有的内容进行汇总
+        // reduce 函数的第一个参数是一个回调函数 函数的第一个参数是 return 值 第二个参数 n 和上面类似
+        // reduce 函数的第二个参数是第一次返回的初始值 
+        let total = new2Nums.reduce(function(preValue, n) {
+            return preValue + n;
+        }, 0);
+        console.log(total);
+        // 链式操作
+        let total1 = nums.filter(function(n) {
+            return n <= 100;
+        }).map(function(n) {
+            return n * 2;
+        }).reduce(function(preValue, n) {
+            return preValue + n;
+        }, 0)
+        console.log(total1);
+        // 使用箭头函数
+        let total2 = nums.filter(n => n <= 100).map(n => n * 2).reduce((preValue, n) => preValue + n);
+        console.log(total2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6对象增强写法</title>
+</head>
+
+<body>
+    <script>
+        // 1.属性的简写
+        // ES6之前
+        let name = 'sfg'
+        let age = 18
+        let obj1 = {
+            name: name,
+            age: age
+        }
+        console.log(obj1);
+        // ES6之后
+        let obj2 = {
+            name,
+            age
+        }
+        console.log(obj2);
+        // 2.方法的简写
+        // ES6之前
+        let obj3 = {
+            test: function() {
+                console.log('obj3 的 test 函数');
+            }
+        }
+        obj3.test()
+            // ES6 之后
+        let obj4 = {
+            test() {
+                console.log('obj4 的 test 函数');
+
+            }
+        }
+        obj4.test();
+    </script>
+</body>
+
+</html>

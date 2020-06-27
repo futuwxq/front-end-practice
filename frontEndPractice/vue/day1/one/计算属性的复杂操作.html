@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        总价格是 <span>{{totlaPrice}} </span>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                books: [{
+                    id: 1,
+                    name: '线性代数',
+                    price: 45
+                }, {
+                    id: 2,
+                    name: '数理统计',
+                    price: 85
+                }, {
+                    id: 3,
+                    name: '离散数学',
+                    price: 45
+                }]
+            },
+            computed: {
+                totlaPrice() {
+                    // return this.books.reduce
+                    let total = 0;
+                    for (let i = 0; i < this.books.length; i++) {
+                        console.log(this.books[i].price);
+                        total += this.books[i].price;
+                    }
+                    return total
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
