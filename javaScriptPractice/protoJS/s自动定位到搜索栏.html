@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>s自动定位到搜索栏并聚焦</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+
+<body>
+    <input type="text" name="" id="phone" value="手机">
+    <script>
+        var select = document.querySelector('#phone');
+        select.onfocus = function() {
+            // this.innerHTML = '';
+            if (this.value === '手机') {
+                this.value = '';
+            }
+
+            this.style.color = 'rgba(51, 51, 51, 1)';
+        }
+
+        select.onblur = function() {
+                // this.innerHTML = '';
+                if (this.value === '') {
+                    this.value = '手机';
+                }
+                this.style.color = 'rgb(153, 153, 153)';
+            }
+            // 核心思路： 检测用户是否按下了s 键，如果按下s 键，就把光标定位到搜索框里面
+            // 使用键盘事件对象里面的keyCode 判断用户按下的是否是s键
+            // 搜索框获得焦点： 使用 js 里面的 focus() 方法
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === 83) {
+                select.focus();
+            }
+        })
+    </script>
+</body>
+
+</html>

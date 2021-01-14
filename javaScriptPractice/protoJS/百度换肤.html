@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度换肤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: url(img/1.jpg) no-repeat;
+        }
+        
+        ul.baidu {
+            width: 420px;
+            list-style: none;
+            margin: 100px auto;
+            background-color: #ffffff;
+        }
+        
+        .baidu li {
+            float: left;
+            margin: 0 1px;
+            cursor: pointer;
+        }
+        
+        .baidu li img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="baidu">
+        <li><img src="img/1.jpg" alt=""> </li>
+        <li><img src="img/2.jpg" alt=""> </li>
+        <li><img src="img/3.jpg" alt=""> </li>
+        <li><img src="img/4.jpg" alt=""> </li>
+    </ul>
+    <script>
+        var smallImg = document.querySelector('.baidu').querySelectorAll('img');
+        for (var i = 0; i < smallImg.length; i++) {
+            smallImg[i].onclick = function() {
+                // console.log(this);
+                // document.style.backgroundImage = 'url(' + this.src + ' )';
+                document.body.style.backgroundImage = 'url(' + this.src + ' )';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册信息</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 提交到首页 -->
+    <form action="index.html">
+        <!-- input 里面的name属性必须要写 负责属性名不知道 就不会显示属性信息 -->
+        <input type="text" id="name" value='姓名' name="uname">
+        <input type="submit" value="提交">
+        <!-- <button type="submit">提交</button> -->
+    </form>
+
+    <script>
+        var select = document.querySelector('#name');
+        select.onfocus = function() {
+            // this.innerHTML = '';
+            if (this.value === '姓名') {
+                this.value = '';
+            }
+
+            this.style.color = 'rgba(51, 51, 51, 1)';
+        }
+
+        select.onblur = function() {
+            // this.innerHTML = '';
+            if (this.value === '') {
+                this.value = '姓名';
+            }
+            this.style.color = 'rgb(153, 153, 153)';
+        }
+    </script>
+</body>
+
+</html>

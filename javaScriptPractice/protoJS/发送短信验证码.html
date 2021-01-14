@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送短信验证码</title>
+</head>
+
+<body>
+    手机号码： <input type="number"> <button>发送</button>
+</body>
+<script>
+    var btn = document.querySelector('button');
+    // btn注册点击监听事件
+    var time = 10;
+    btn.addEventListener('click', function() {
+        btn.disabled = 'true'; //禁用按钮
+        var timer = setInterval(function() { //计时，每隔一秒就time-1
+            if (time == 0) {
+                // 清除定时器和恢复按钮和内容
+                clearInterval(timer);
+                btn.disabled = 'false';
+                btn.innerHTML = '发送';
+            } else {
+                btn.innerHTML = '还有' + time + '秒';
+                time--;
+            }
+
+        }, 1000)
+    })
+</script>
+
+</html>

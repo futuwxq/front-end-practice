@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+    <style>
+        .outer {
+            background-color: #ccc;
+            margin: 20px 0 40px 0;
+            overflow: hidden;
+        }
+        
+        p {
+            padding: 0;
+            margin: 20px 0 20px 0;
+            background-color: rgb(233, 78, 119);
+            color: #fff;
+        }
+        
+        ul {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="outer">
+
+        <p>使用简单的float示例最容易理解块级格式化上下文（BFC）的行为。在下面的示例中， 将设置一个框，其中包含左侧浮动的图像和一些文本。如果我们有大量文本，它会围绕浮动图像 ，然后边界将文本和图像围在里面。</p>
+        <p>4655</p>
+
+    </div>
+    <ul>
+        123
+    </ul>
+
+
+
+    <script>
+        // function Star() {
+
+        // }
+        // var ldh = new Star();
+        // var zxy = new Star();
+        // ldh.name = 'ldh';
+        // ldh.age = 15;
+        // Star.prototype.name = 'star';
+        // console.dir(ldh);
+        // console.dir(zxy); //undefined
+        // console.log(ldh.__proto__ === Star.prototype);
+        // console.log(ldh.__proto__.constructor === Star);
+
+        // var obj = {
+        //     id: 1,
+        //     pname: '小米',
+        //     price: 1999
+        // };
+        // Object.defineProperty(obj, 'address', {
+        //     value: '1',
+        //     writable: true,
+        //     enumerable: false,
+        //     configurable: false
+        // });
+        // console.log(obj);
+        // Object.defineProperty(obj, 'address', {
+        //     value: '2',
+        //     writable: true,
+        //     enumerable: true,
+        //     configurable: false
+        // });
+        // console.log(obj.address);
+        // delete obj.address;
+        // console.log(obj.address);
+        function Father(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+            console.log(this);
+        }
+
+        function Son(uname, age, sex) {
+            Father(uname, age, sex);
+            // Father.call(this, uname, age, sex);
+        }
+        var son = new Son('刘德华', 18, '男');
+        // var father = new Father('1', '45', '女');
+        console.log(Son);
+        console.log(son);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let面试题</title>
+</head>
+
+<body>
+    <script>
+        // var arr = [];
+        // for (let i = 0; i < 2; i++) {
+        //     arr[i] = function() {
+        //         console.log(i);
+        //     }
+        // }
+        // // console.log(i);
+        // arr[0]();
+        // arr[1]();
+        // const s4 = new Set();
+        // // 向set结构中添加值 使用add方法
+        // s4.add('a').add('b');
+        // console.log(s4.size) //2
+
+        // // 从set结构中删除值 用到的方法是delete
+        // const r1 = s4.delete('c');
+        // console.log(s4.size)
+        // console.log(r1); //false 没有c
+
+        // // 判断某一个值是否是set数据结构中的成员 使用has
+        // const r2 = s4.has('d');
+        // console.log(r2) // false
+
+        // // 清空set数据结构中的值 使用clear方法
+        // s4.clear();
+        // console.log(s4.size) //0
+        const s = new Set(['a', 'b', 'c']);
+        s.forEach(value => {
+            console.log(value);
+        })
+    </script>
+</body>
+
+</html>

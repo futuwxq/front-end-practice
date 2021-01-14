@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包的应用</title>
+</head>
+
+<body>
+    <p>点击li输出索引号</p>
+    <p>3秒之后打印所有 li 元素的内容</p>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ol>
+        <li>la</li>
+        <li>laa</li>
+        <li>laaa</li>
+        <li>laaaa</li>
+        <li>laaaaa</li>
+    </ol>
+    <script>
+        var lis = document.querySelectorAll('ul li');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i; //所以我们以前是先把i值存起来
+            lis[i].onclick = function() {
+                //因为i++是同步任务，页面加载的这里就会自动执行，然后i的值变成5了，而onclick这个函数是异步任务，在点击之后才会执行（此时的i已经是5,超出了数组的边界）
+                console.log(i);
+                console.log(this.index);
+            }
+        }
+        // 现在我们通过闭包的思想来做
+        var items = document.querySelectorAll('ol li');
+        for (var i = 0; i < lis.length; i++) {
+            // 利用for循环创建了4个立即执行函数
+            // 立即执行函数也成为小闭包因为立即执行函数里面的任何一个函数都可以使用它的i这变量
+            (function(i) { //这里接受参数i
+                items[i].onclick = function() {
+                        console.log(i);
+                    }
+                    //3秒之后打印所有 li 元素的内容
+                setTimeout(function() {
+                    console.log(new Date(), items[i].innerHTML)
+                }, 3000)
+            })(i); //这里把i作为参数传递给立即执行函数
+        }
+    </script>
+</body>
+
+</html>

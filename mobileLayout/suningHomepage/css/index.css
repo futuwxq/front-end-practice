@@ -1,0 +1,169 @@
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  margin: 0 auto!important  ;
+  line-height: 1.5;
+  font-family: Arial, Helvetica;
+  background: #F2F2F2;
+  font-size: 0.5rem;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.nav-top {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 15rem;
+  height: 1.76rem;
+  background-color: #ffc001;
+  font-size: 0.5rem;
+}
+.nav-top .clasify {
+  width: 0.88rem;
+  height: 1.4rem;
+  margin: 0.22rem 0.5rem 0.14rem 0.48rem;
+  background: url(../images/classify.png) no-repeat;
+  background-size: 0.88rem, 1.4rem;
+}
+.nav-top .search {
+  flex: 1;
+  margin: 0.24rem 0;
+}
+.nav-top .search input {
+  height: 1.32rem;
+  width: 100%;
+  line-height: 1.32rem;
+  background-color: #fff2cc;
+  padding-left: 1.1rem;
+  outline: none;
+  border-radius: 0.66rem;
+  border: none ;
+}
+.nav-top .login {
+  width: 1.5rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+  margin: 0.2rem;
+  color: #fff;
+}
+.banner {
+  width: 100%;
+  height: 7.36rem;
+}
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+.ad {
+  display: flex;
+}
+.ad a {
+  flex: 1;
+}
+.ad a img {
+  width: 100%;
+}
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.main-nav a {
+  display: flex;
+  flex-direction: column;
+  flex: 20%;
+  height: 2.8rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.main-nav a img {
+  width: 1.64rem;
+  height: 1.64rem;
+}
+.category {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  background-color: #fff;
+  width: 15rem;
+  height: 2rem;
+  text-align: center;
+}
+.category a {
+  display: flex;
+  flex-direction: column;
+}
+.category a img {
+  width: 0.96rem;
+  height: 0.96rem;
+  margin: 0.24rem 1.02rem 0;
+}
+.category a span {
+  font-weight: bold;
+  font-size: 0.56rem;
+}

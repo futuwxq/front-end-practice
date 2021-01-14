@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎</title>
+</head>
+<p class="welcom"></p>
+
+<body>
+    <!-- 这里会出现中文的值乱码问题,通过decodeURIComponent(item[1]);执行解码，因为中文字符串往往在传递时被编码过了-->
+    <script>
+        console.log(location.search);
+        var search = location.search.substr(1);
+        var uname = search.split('=');
+
+        console.log(uname);
+        var welcom = document.querySelector('.welcom');
+        welcom.innerHTML = decodeURIComponent(uname[1]) + '欢迎你';
+    </script>
+</body>
+
+</html>

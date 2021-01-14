@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时跳转页面</title>
+</head>
+
+
+<body>
+    <button>跳转</button>
+    <div class="message"></div>
+    <script>
+        var btn = document.querySelector('button');
+        var mes = document.querySelector('.message');
+        var time = 5;
+        btn.addEventListener('click', function() {
+            location.href = 'https://www.bilibili.com';
+        })
+        setInterval(function() {
+            if (time == 0) {
+                location.href = 'https://www.bilibili.com';
+            } else {
+                mes.innerHTML = '你将在' + time + 's后跳转到首页';
+                time--;
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

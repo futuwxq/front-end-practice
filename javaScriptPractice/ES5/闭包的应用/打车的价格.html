@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打车的价格</title>
+</head>
+
+
+<body>
+    公里数<input type="text" class="s"> 是否拥堵 <input type="text" class="crowd">
+    <script>
+        var s = document.querySelector('s');
+        var crowd = document.querySelector('crowd');
+        var car = (function() {
+            var start = 13;
+            var total = 0;
+            return {
+                // 正常的价格
+                price: function(n) {
+                    if (n <= 3) {
+                        total = start;
+                    } else {
+                        total = start + (n - 3) * 5;
+                    }
+                    return total;
+                },
+                // 拥堵之后的价格
+                yd: function(flag) {
+                    return flag ? total + 10 : total;
+                }
+            }
+        })();
+        console.log(car.price(4));
+        console.log(car.yd(true));
+    </script>
+</body>
+
+</html>

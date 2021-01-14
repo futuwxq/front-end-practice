@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数式和定时器</title>
+</head>
+
+<body>
+    <p>计时器在立即执行函数里面</p>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <p>计时器</p>
+    <ol>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ol>
+    <script>
+        var ulis = document.querySelectorAll('ul li');
+        var olis = document.querySelectorAll('ol li');
+        for (var i = 0; i < ulis.length; i++) {
+            console.log(1);
+            (function(i) {
+                setTimeout(function() {
+                    console.log(new Date(), ulis[i].innerHTML)
+                }, 1000 * i)
+            })(i);
+        }
+        // 下面这个函数，第1个参数不是一个函数，而是一个表达式，也就是说会立即执行的函数，它不会等到计时器起作用才执行，而是只要一碰到就会执行，所以表现形式就是直接打出了0，1，2，3，4。
+        console.log(new Date());
+        for (var i = 0; i < olis.length; i++) {
+            setTimeout(function(j) {
+                console.log(j);
+                console.log(new Date(), j)
+
+            }(i), 1000 * i)
+        }
+    </script>
+</body>
+
+</html>
