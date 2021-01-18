@@ -16,6 +16,6 @@ transitionend 事件会在 CSS transition 结束后触发
  + 模板字符串最后整个元素都是字符串，e.keyCode是一个 number 值
  
  ```
- "${e.keyCode}" 转化为字符串类型
+ "${e.keyCode}" 原本就有"",`audio[data-key="${e.keyCode}"]` 现在是一个字符串，里面的变量也会解析为字符串的一部分 
  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
  ```

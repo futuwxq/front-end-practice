@@ -90,6 +90,37 @@
             bottom: 50%;
             transform: translate(-50%, 0);
         }
+        
+        .min-hand::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 45%;
+            position: absolute;
+            background: green;
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%, 0);
+        }
+        
+        .hour-hand::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 40%;
+            position: absolute;
+            background: yellow;
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%, 0);
+        }
+        /* .min-hand {
+            transform: rotate(90deg);
+        }
+        
+        .hour-hand {
+            transform: rotate(-90deg);
+        } */
     </style>
 
     <script>
@@ -110,27 +141,42 @@
         //     band.style.transformOrigin = '100%'
         // }
 
-        // // 
-        // function rotateHond() {
-        //     const myDate = new Date();
-        //     let h = myDate.getHours();
-        //     let m = myDate.getMinutes();
-        //     let s = myDate.getSeconds()
-        //     m = m + s / 60
-        //     h = h + m / 60
-        //     const hourhand = document.querySelector('.hour-hand')
-        //     const minhand = document.querySelector('.min-hand')
-        //     const secondhand = document.querySelector('.second-hand')
-        //     const secondDegree = s * 360 / 60 + 90
-        //     const minDegree = m * 360 / 60 + 90
-        //     const hourdDegree = h * 360 / 12 + 90
-        //     secondhand.style.transform = `rotate(${secondDegree}deg)`
-        //     minhand.style.transform = `rotate(${minDegree}deg)`
-        //     hourhand.style.transform = `rotate(${hourdDegree}deg)`
-        // }
+        //每一秒 时针 分针 秒针转动的效果
+        function rotateHond() {
+            const myDate = new Date();
+            let h = myDate.getHours();
+            let m = myDate.getMinutes();
+            let s = myDate.getSeconds()
+                // 计算现在是 多少分钟，把秒计算为小数分钟
+            m = m + s / 60
+                // 计算现在是多少小时
+            h = h + m / 60
+                // 计算分钟 时针 秒针现在的度数
+                //    现在分钟旋转的度数 = 现在是多少分钟 * 360度/60min
+            const secondDegree = s * 360 / 60
+            const minDegree = m * 360 / 60
+            const hourdDegree = h * 360 / 12
+            const hourhand = document.querySelector('.hour-hand')
+            const minhand = document.querySelector('.min-hand')
+            const secondhand = document.querySelector('.second-hand')
+            secondhand.style.transform = `rotate(${secondDegree}deg)`
+            minhand.style.transform = `rotate(${minDegree}deg)`
+            hourhand.style.transform = `rotate(${hourdDegree}deg)`
+        }
 
-        // setInterval(rotateHond, 1000);
-        // rotateHond()
+        setInterval(rotateHond, 1000);
+        rotateHond()
+            // var date1 = new Date();
+            // console.log(date1.getFullYear());
+            // console.log(date1.getDay());
+            // console.log(date1.getDate());
+            // console.log(date1.getMonth())
+            // console.log(date1.getHours())
+            // console.log(date1.getMinutes())
+            // console.log(date1.getSeconds())
+        let a = true
+        let word = `内容是${a}`
+        console.log(word);
     </script>
 </body>
 
