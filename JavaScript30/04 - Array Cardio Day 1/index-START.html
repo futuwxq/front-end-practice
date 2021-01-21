@@ -148,14 +148,14 @@
         // 8. Reduce Exercise
         // Sum up the instances of each of these
         let data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
-        data.forEach((e, data) => {
-            if (!data[e]) {
-                data[e] = 0
-            }
-            data[e]++
-                return data
-        })
-        console.log(data);
+        const dataobj = data.reduce((obj, item) => {
+
+                if (!obj[item]) obj[item] = 0
+                console.log(obj, item);
+                obj[item]++
+                    return obj
+            }, {})
+            // console.log(dataobj);
     </script>
 </body>
 
