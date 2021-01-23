@@ -1,19 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>HTML5 Canvas</title>
-</head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
 
-<style>
-  html, body {
-    margin: 0;
-  }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas</title>
+</head>
+
+<body>
+    <canvas id="draw" width="800" height="800"></canvas>
+    <script>
+        // [a, b] = [1, 2]
+        // console.log(a);
+        // 获取canvas
+        const canvas = document.querySelector('canvas')
+        const ctx = canvas.getContext('2d')
+            // canvas 的宽度和高度占满整个平面
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+            // 画笔颜色
+        ctx.strokeStyle = '#BADA55';
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 100;
+        // ctx.globalComposite
+        let isDrawing = false
+        let x = 0
+        let y = 0
+            // hsl颜色的第一个百分比
+        let hue = 0
+            // 画笔是否宽度递增
+        let direction = true
+            // ctx.fillStyle = 'green';
+            // ctx.fillRect(10, 10, 150, 100);
+        function draw(e) {
+            // 判断
+            if (!isDrawing) return
+
+            console.log(hue);
+            ctx.strokeStyle = `hsl(${hue},100%,50%)`
+            ctx.beginPath();
+            // 定义线条开始坐标
+            ctx.moveTo(x, y);
+            //  定义线条结束坐标
+            ctx.lineTo(e.offsetX, e.offsetY);
+            // 使用 stroke() 方法来绘制线条
+            ctx.stroke();
+            // 改变坐标 颜色 宽度
+            [x, y] = [e.offsetX, e.offsetY]
+            hue = hue < 360 ? ++hue : 0
+            if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+                direction = !direction
+            }
+            if (direction) {
+                ctx.lineWidth++
+            } else {
+                ctx.lineWidth--
+            }
+        }
+
+        // 鼠标事件
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            [x, y] = [e.offsetX, e.offsetY]
+        })
+        canvas.addEventListener('mousemove', draw)
+        canvas.addEventListener('mouseup', () => isDrawing = false)
+        canvas.addEventListener('mouseleave', () => isDrawing = false)
+    </script>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+        /* canvas {
+            border: 1px solid red;
+        } */
+    </style>
 
 </body>
+
 </html>
