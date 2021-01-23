@@ -1,22 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Type Ahead 👀</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
-    <ul class="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
-    </ul>
-  </form>
-<script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    <form class="search-form">
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+            <li>Filter for a city</li>
+            <li>or a state</li>
+        </ul>
+    </form>
+    <script>
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
-</script>
+        // 从 api 获取所有的数据，存在 res
+        const res = []
+        fetch(endpoint).then(function(response) {
+            return response.json();
+        }).then(function(myJson) {
+            res.push(...myJson);
+        });
+
+        function matchPlace(res, value) {
+            return res.filter(place => {
+                const regx = new RegExp(value, 'gi');
+                return place.city.match(regx) || place.state.match(regx)
+            })
+        }
+
+        function numberAddCommas(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        }
+
+        function handleSearch(e) {
+            console.log(e.key);
+            // e.key 和 this.value 的区别
+            // 获取匹配的数组数据
+            const matchArray = matchPlace(res, this.value)
+            const html = matchArray.map(element => {
+                const regx = new RegExp(this.value, 'gi')
+                const cityName = element.city.replace(regx, `<span class="hl">${this.value}</span>`)
+                const stateName = element.state.replace(regx, `<span class="hl">${this.value}</span>`)
+                return `
+            <li >
+              <span class="name">${cityName}, ${stateName}</span>
+              <span class="population">${numberAddCommas(element.population)}</span>
+              </li>
+            `
+            }).join('');
+
+            suggestion.innerHTML = html
+
+
+        }
+
+
+
+        // 绑定监听事件
+        const input = document.querySelector('input')
+        const suggestion = document.querySelector('.suggestions')
+        input.addEventListener('keyup', handleSearch)
+    </script>
 </body>
+
 </html>
