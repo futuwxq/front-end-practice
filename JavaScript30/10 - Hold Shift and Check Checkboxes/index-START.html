@@ -1,101 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Hold Shift to Check Multiple Checkboxes</title>
+    <meta charset="UTF-8">
+    <title>Hold Shift to Check Multiple Checkboxes</title>
 </head>
+
 <body>
-  <style>
-
-    html {
-      font-family: sans-serif;
-      background: #ffc600;
-    }
-
-    .inbox {
-      max-width: 400px;
-      margin: 50px auto;
-      background: white;
-      border-radius: 5px;
-      box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
-    }
-
-    .item {
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #F1F1F1;
-    }
-
-    .item:last-child {
-      border-bottom: 0;
-    }
-
-    input:checked + p {
-      background: #F9F9F9;
-      text-decoration: line-through;
-    }
-
-    input[type="checkbox"] {
-      margin: 20px;
-    }
-
-    p {
-      margin: 0;
-      padding: 20px;
-      transition: background 0.2s;
-      flex: 1;
-      font-family:'helvetica neue';
-      font-size: 20px;
-      font-weight: 200;
-      border-left: 1px solid #D1E2FF;
-    }
-  </style>
-   <!--
+    <style>
+        html {
+            font-family: sans-serif;
+            background: #ffc600;
+        }
+        
+        .inbox {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #F1F1F1;
+        }
+        
+        .item:last-child {
+            border-bottom: 0;
+        }
+        
+        input:checked+p {
+            background: #F9F9F9;
+            text-decoration: line-through;
+        }
+        
+        input[type="checkbox"] {
+            margin: 20px;
+        }
+        
+        p {
+            margin: 0;
+            padding: 20px;
+            transition: background 0.2s;
+            flex: 1;
+            font-family: 'helvetica neue';
+            font-size: 20px;
+            font-weight: 200;
+            border-left: 1px solid #D1E2FF;
+        }
+    </style>
+    <!--
    The following is a common layout you would see in an email client.
 
    When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
 
   -->
-  <div class="inbox">
-    <div class="item">
-      <input type="checkbox">
-      <p>This is an inbox layout.</p>
+    <div class="inbox">
+        <div class="item">
+            <input type="checkbox">
+            <p>This is an inbox layout.</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Check one item</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Hold down your Shift key</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Check a lower item</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Everything in between should also be set to checked</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Try to do it without any libraries</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Just regular JavaScript</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Good Luck!</p>
+        </div>
+        <div class="item">
+            <input type="checkbox">
+            <p>Don't forget to tweet your result!</p>
+        </div>
     </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Check one item</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Hold down your Shift key</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Check a lower item</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Everything in between should also be set to checked</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Try to do it without any libraries</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Just regular JavaScript</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Good Luck!</p>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <p>Don't forget to tweet your result!</p>
-    </div>
-  </div>
 
-<script>
-</script>
+    <script>
+        const inputs = document.querySelectorAll('.inbox input[type="checkbox"]')
+            // console.log(inputs);
+
+        let lastChecked;
+
+        // 方法一
+        // 上一次点击的按钮（无论是选择还是未选中）和这次点击的按钮（选中）+shift = 中间所有的按钮都选中
+        // function handleCheck(e) {
+        //     let inbetween = false
+        //     if (!lastChecked) lastChecked = this
+        //         // 快捷键
+        //     if (e.shiftKey && this.checked) {
+        //         // input === this代表当前按钮 input === lastChecked代表上一次的按钮 让他们之间的input的inbetween 为true
+        //         inputs.forEach(input => {
+        //             // console.log(input);
+        //             // 如果是第一个按键，因为下面两个选项都符合，所以会将后面的所有元素都选中
+        //             if (input === this || input === lastChecked) {
+        //                 inbetween = !inbetween
+        //             }
+        //             if (inbetween) input.checked = true
+        //         })
+
+        //     }
+        //     lastChecked = this
+        // }
+
+        // 方法二
+        const inputArr = Array.from(inputs)
+        let onOrOff = false
+
+        function handleCheck2(e) {
+            if (!lastChecked) lastChecked = this;
+            onOrOff = this.checked ? true : false
+            if (e.shiftKey) {
+                let start = inputArr.indexOf(this)
+                let end = inputArr.indexOf(lastChecked)
+                    //如果第一次点击一个按钮，后面的全部都应该选择
+                if (start === end) {
+                    end = inputArr.length - 1
+                }
+                inputArr.slice(Math.min(start, end), Math.max(start, end) + 1)
+                    .forEach(input => input.checked = onOrOff)
+                console.log(start + ';' + end);
+            }
+            lastChecked = this
+        }
+        inputArr.forEach(input => {
+            input.addEventListener('click', handleCheck2)
+        })
+    </script>
 </body>
+
 </html>
