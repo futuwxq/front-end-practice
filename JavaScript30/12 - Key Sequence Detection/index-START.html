@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
+
 <body>
-<script>
-</script>
+    <script>
+        const pressed = []
+        const seretCode = "yellow"
+
+        function handleKeyup(e) {
+            pressed.push(e.key)
+            console.log(pressed);
+
+            // 维持一个长度为 ceretCode 长度相等的数组
+            // if (pressed.length > seretCode.length) pressed.shift()
+            pressed.splice(-seretCode.length - 1, pressed.length - seretCode.length)
+            console.log(pressed);
+            // 数组转化为字符串，判断是否有密码
+            if (pressed.join('').includes(seretCode)) {
+                console.log("success");
+                cornify_add();
+            }
+        }
+        window.addEventListener('keyup', handleKeyup)
+    </script>
 </body>
+
 </html>
