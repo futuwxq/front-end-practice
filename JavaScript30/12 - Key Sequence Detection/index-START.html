@@ -6,8 +6,41 @@
     <title>Key Detection</title>
     <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        /* border: 1px solid red;
+        display: inline-block; */
+        position: relative;
+        margin-bottom: 20px;
+    }
+    
+    div.off::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        border: 1px solid #000;
+        transform: scale(0.5);
+        transform-origin: top left;
+    }
+    
+    .onn {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+    
+    .off::before {}
+</style>
 
 <body>
+    <div class="off"></div>
+    <div class="onn"></div>
     <script>
         const pressed = []
         const seretCode = "yellow"
