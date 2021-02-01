@@ -1,40 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Mouse Shadow</title>
+    <meta charset="UTF-8">
+    <title>Mouse Shadow</title>
 </head>
+
 <body>
 
-  <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
-  </div>
+    <div class="hero">
+        <h1 contenteditable>🔥WOAH!</h1>
+    </div>
 
-  <style>
-  html {
-    color: black;
-    font-family: sans-serif;
-  }
+    <style>
+        html {
+            color: black;
+            font-family: sans-serif;
+        }
+        
+        body {
+            margin: 0;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+        }
+        
+        h1 {
+            text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+            font-size: 100px;
+        }
+    </style>
 
-  body {
-    margin: 0;
-  }
+    <script>
+        const hero = document.querySelector('.hero')
+        const text = hero.querySelector('h1')
+        const length = 500
 
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-  }
+        function handleShadow(e) {
 
-  h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 100px;
-  }
-  </style>
+            let {
+                offsetX: x,
+                offsetY: y
+            } = e
+            // 考虑 offsetX 和 offsetY 
+            if (this !== e.target) {
+                x += e.target.offsetLeft
+                y += e.target.offsetTop
+            }
 
-<script>
-</script>
+            // let lengthX = Math.floor((x / this.offsetWidth) * length)
+            // let lengthY = Math.floor((y / this.offsetHeight) * length)
+            //  上式 是鼠标距离 hero 元素左边的宽度 / hero 元素的宽度 是0-1的比例
+            // 下式是 -1 - 1 的比例，原理来自 （0 - 1）*2 - 1 因为阴影需要上下左右浮动所以需要 -1 - 1 的比例
+            // console.log(this.offsetHeight, this.offsetWidth);
+            const lengthX = Math.floor((x / this.offsetWidth) * length) * 2 - length
+            const lengthY = Math.floor((y / this.offsetHeight) * length) * 2 - length
+            text.style.textShadow = `
+            ${lengthX}px ${lengthY}px 0px rgba(255,0,255,0.7),
+            ${lengthX*-1}px ${lengthY}px 0 rgba(0,255,255,0.7),
+            ${lengthY}px ${lengthX * -1}px 0 rgba(0,255,0,0.7),
+            ${lengthY *-1}px ${lengthX}px 0 rgba(0,0,255,0.7)
+            `
+        }
+
+        hero.addEventListener('mousemove', handleShadow)
+    </script>
 </body>
+
 </html>
