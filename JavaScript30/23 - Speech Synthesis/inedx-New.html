@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Synthesis</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="voiceinator">
+
+        <h1>The Voiceinator 5000</h1>
+
+        <select name="voice" id="voices">
+        <option value="">Select A Voice</option>
+      </select>
+        <!-- 音速 -->
+        <label for="rate">Rate:</label>
+        <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+        <!-- 音调 -->
+        <label for="pitch">Pitch:</label>
+
+        <input name="pitch" type="range" min="0" max="2" step="0.1">
+        <!-- 音量 -->
+        <label for="volume">Volume:</label>
+
+        <input name="volume" type="range" min="0" max="3" value="1" step="0.1">
+        <textarea name="text">你能说中文吗</textarea>
+        <button id="stop">Stop!</button>
+        <button id="speak">Speak</button>
+
+    </div>
+
+    <script>
+        const msg = new SpeechSynthesisUtterance();
+        let voices = [];
+        const voicesDropdown = document.querySelector('[name="voice"]');
+        const options = document.querySelectorAll('[type="range"], [name="text"]');
+        const speakButton = document.querySelector('#speak');
+        const stopButton = document.querySelector('#stop');
+        // 首先需要设置播音的文本
+        msg.text = document.querySelector('textarea').value
+
+        function initalLange() {
+            voices = this.getVoices()
+                // console.log(lange);
+            voicesDropdown.innerHTML = voices.
+            map(lan => `<option value="${lan.name}">${lan.name}(${lan.lang})</option>`)
+                .join('')
+        }
+        // speak 播放
+        function handleSpeak(e, isNotCancle = true) {
+            speechSynthesis.cancel()
+            if (isNotCancle) {
+                speechSynthesis.speak(msg);
+            }
+            // console.log(msg);
+        }
+        // 设置语言属性 并播放
+        function setVoice() {
+            msg.voice = voices.find(voice => voice.name === this.value)
+            console.log(msg);
+            handleSpeak()
+        }
+        // 设置语速，语调，播放内容
+        function setOption() {
+            console.log(this.name, this.value);
+            msg[this.name] = this.value
+            handleSpeak()
+
+        }
+        // 初始化 select 的语言选项
+        speechSynthesis.addEventListener('voiceschanged', initalLange)
+            // 选定语言 表单
+        voicesDropdown.addEventListener('change', setVoice)
+        options.forEach(option => option.addEventListener('change', setOption))
+            // 点击 speak 触发 speak 事件
+        speakButton.addEventListener('click', handleSpeak)
+        stopButton.addEventListener('click', () => handleSpeak(false))
+    </script>
+
+</body>
+
+</html>
