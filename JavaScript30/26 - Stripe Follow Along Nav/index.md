@@ -47,4 +47,7 @@
 ```
 setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
 ```
+**e.composedPath()**
+ composedPath() 是 Event 接口的一个方法，当对象数组调用该侦听器时返回事件路径。
+ 
 
